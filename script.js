@@ -32,13 +32,36 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice){
     const player = humanChoice.toLowerCase();
     const computer = computerChoice;
-    if (player === "rock" && computer === "paper") console.log("You lose! Paper beats Rock");
-    else if (player === "paper" && computer === "scissors") console.log("You lose! Scissors beats Paper") ;
-    else if (player === "scissors" && computer === "rock") console.log("You lose! Rock beats Scissors") ;
-    else if (player === "rock" && computer === "scissors") console.log("You win! Rock beats Scissors") ;
-    else if (player === "paper" && computer === "rock") console.log("You win! Paper beats Rock") ;
-    else if (player === "scissors" && computer === "paper") console.log("You win! Scissors beats Paper") ;
-    else console.log("Stale!") ;
+    if (player === "rock" && computer === "paper") {
+        console.log("You lose! Paper beats Rock");
+        computerScore++;
+    }
+    else if (player === "paper" && computer === "scissors"){
+        console.log("You lose! Scissors beats Paper");
+        computerScore++;
+    }
+    else if (player === "scissors" && computer === "rock") {
+        console.log("You lose! Rock beats Scissors");
+        computerScore++;
+    }
+    else if (player === "rock" && computer === "scissors") {
+        console.log("You win! Rock beats Scissors");
+        humanScore++;
+    }
+    else if (player === "paper" && computer === "rock") {
+        console.log("You win! Paper beats Rock");
+        humanScore++;
+    }
+    else if (player === "scissors" && computer === "paper") {
+        console.log("You win! Scissors beats Paper");
+        humanScore++;
+    }
+    else if (player === computer && computer === player) {
+        console.log("Stale!");
+    }
+    else {
+        console.log("Round Invalid");
+    }
 }
 
 const humanSelection = getHumanChoice();
@@ -47,3 +70,4 @@ console.log("You chose: ",humanSelection);
 console.log("Computer chose: ",computerSelection);
 
 playRound(humanSelection, computerSelection);
+console.log("Scoreboard ", "Player:",humanScore,"Computer:", computerScore);
